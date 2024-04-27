@@ -1,0 +1,5 @@
+Q1. Does ANSI recognize the data type DATE?
+--> Yes, ANSI revognize the data type DATE.
+
+Q2. Which subdivision of SQL is used to insert values in tables?
+--> INSERT INTO VALUES.
