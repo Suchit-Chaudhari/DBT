@@ -1,0 +1,54 @@
+mysql> select Orders.Onum, Customers.cname from orders join customers on orders.cnum = customers.cnum;
++------+----------+
+| Onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3003 | Liu      |
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3006 | Cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
++------+----------+
+9 rows in set (0.00 sec)
+
+
+mysql> select Orders.Onum, SalesPeople.sname, customers.cname
+    -> from orders
+    -> join customers on orders.cnum = customers.cnum
+    -> join salespeople on orders.snum = salespeople.snum;
++------+---------+----------+
+| Onum | sname   | cname    |
++------+---------+----------+
+| 3003 | Peel    | Hoffman  |
+| 3009 | Axelrod | Giovanni |
+| 3003 | Peel    | Liu      |
+| 3010 | Serres  | Grass    |
+| 3007 | Serres  | Grass    |
+| 3008 | Peel    | Clemens  |
+| 3006 | Rifkin  | Cisneros |
+| 3001 | Rifkin  | Cisneros |
+| 3002 | Motika  | Pereira  |
++------+---------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select onum, cname from Orders o, customers c where o.cnum=c.cnum
+;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3003 | Liu      |
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3006 | Cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
++------+----------+
+9 rows in set (0.00 sec)
+
+mysql> 
