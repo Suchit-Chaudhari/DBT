@@ -1,0 +1,11 @@
+Q1. Which field of CUSTOMERS Table is Primary key?
+--> Cusotmer Number is the Primary key in Customers table.
+
+Q2. What is the fourth column of the customers table?
+--> Rating.
+
+Q3. What is another word for row? For Column?
+--> Record or Tuple.
+
+Q4. Why isn't it possible to see first five rows of the table?
+--> Because tuples don't have orders.
