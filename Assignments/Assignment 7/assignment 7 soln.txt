@@ -1,0 +1,77 @@
+mysql> select count(*) as order_count from orders where Odate = '1990-10-03';
++-------------+
+| order_count |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) as cities from cusstomers where city is not null;
+ERROR 1146 (42S02): Table 'mydb.cusstomers' doesn't exist
+mysql> select count(*) as cities from cusstomers where city is not null;       system cls;^C
+mysql> select count(*) as cities from customers where city is not null;
++--------+
+| cities |
++--------+
+|      7 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select count(distinct city) as cities from customers where city is not null;
++--------+
+| cities |
++--------+
+|      4 |
++--------+
+1 row in set (0.01 sec)
+
+
+mysql> select cname, min(amt) as minAmount from customers, orders where customers.cnum = orders.cnum group by cname;
++----------+-----------+
+| cname    | minAmount |
++----------+-----------+
+| Cisneros |     18.69 |
+| Liu      |    767.19 |
+| Hoffman  |    767.19 |
+| Pereira  |   1900.10 |
+| Giovanni |   1713.23 |
+| Grass    |     75.75 |
+| Clemens  |   4723.00 |
++----------+-----------+
+7 rows in set (0.00 sec)
+
+
+mysql> select * from customers where cname like 'G%' order by cname;
++------+----------+--------+--------+------+
+| Cnum | Cname    | City   | Rating | Snum |
++------+----------+--------+--------+------+
+| 2002 | Giovanni | Rome   |    200 | 1003 |
+| 2004 | Grass    | Berlin |    300 | 1002 |
++------+----------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select city, Max(rating) from customers group by city;
++----------+-------------+
+| city     | Max(rating) |
++----------+-------------+
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         300 |
+| Berlin   |         300 |
++----------+-------------+
+4 rows in set (0.00 sec)
+
+
+mysql> select Odate, count(distinct snum) as result from orders group by
+ Odate;
++------------+--------+
+| Odate      | result |
++------------+--------+
+| 1990-10-03 |      4 |
+| 1990-10-04 |      2 |
+| 1990-10-05 |      1 |
+| 1990-10-06 |      1 |
++------------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
