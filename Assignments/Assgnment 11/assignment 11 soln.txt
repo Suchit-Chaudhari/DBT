@@ -1,0 +1,29 @@
+mysql> select * from orders where cnum = (select cnum from customers where cname='Cisneros');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+
+
+mysql> select cname, rating from customers
+    -> where cnum in (select cnum from orders where amt > (select avg(amt) from orders));
++---------+--------+
+| cname   | rating |
++---------+--------+
+| Clemens |    100 |
+| Pereira |    100 |
++---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select sum(amt) as totalAmount from orders group by snum having sum(amt) > (select max(amt) from orders);
++-------------+
+| totalAmount |
++-------------+
+|     5490.19 |
+|     6546.15 |
++-------------+
+2 rows in set (0.01 sec)
+
